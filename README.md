@@ -13,34 +13,26 @@ tensorflow-gpu 를 docker image 로 설치하기
 
 3. docker-ce 설치
   - https://www.tensorflow.org/install/docker
-  
+  <pre><code>
   $ sudo apt-get remove docker docker-engine docker.io containerd runc
   $ sudo apt-get update
-  $ sudo apt-get install \
-                 apt-transport-https \
-                 ca-certificates \
-                 curl \
-                 gnupg-agent \
-                 software-properties-common
+  $ sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
   $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-  $ sudo add-apt-repository \
-                 "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-                 $(lsb_release -cs) \
-                 stable"
+  $ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
   $ sudo apt-get update
   $ sudo apt-get install docker-ce docker-ce-cli containerd.io
-
+</code></pre>
 4. nvidia docker 설치
   - https://github.com/NVIDIA/nvidia-docker
-  
+<pre><code>
   $ curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
   $ distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
-  $ curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | \
-                 sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+  $ curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
   $ sudo apt-get update
   $ sudo apt-get install -y nvidia-docker2
   $ sudo pkill -SIGHUP dockerd
-
+</code></pre>
 5. tensorflow image download & test
-  $ docker run --runtime=nvidia -it --rm tensorflow/tensorflow:latest-gpu \
-                 python -c "import tensorflow as tf; tf.enable_eager_execution(); print(tf.reduce_sum(tf.random_normal([1000, 1000])))"
+<pre><code>
+  $ docker run --runtime=nvidia -it --rm tensorflow/tensorflow:latest-gpu python -c "import tensorflow as tf; tf.enable_eager_execution(); print(tf.reduce_sum(tf.random_normal([1000, 1000])))"
+</code></pre>
