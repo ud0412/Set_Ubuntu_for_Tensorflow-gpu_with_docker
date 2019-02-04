@@ -13,6 +13,7 @@ tensorflow-gpu 를 docker image 로 설치하기
 
 3. docker-ce 설치
   - https://www.tensorflow.org/install/docker
+  
   $ sudo apt-get remove docker docker-engine docker.io containerd runc
   $ sudo apt-get update
   $ sudo apt-get install \
@@ -31,6 +32,7 @@ tensorflow-gpu 를 docker image 로 설치하기
 
 4. nvidia docker 설치
   - https://github.com/NVIDIA/nvidia-docker
+  
   $ curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
   $ distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
   $ curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | \
@@ -38,6 +40,7 @@ tensorflow-gpu 를 docker image 로 설치하기
   $ sudo apt-get update
   $ sudo apt-get install -y nvidia-docker2
   $ sudo pkill -SIGHUP dockerd
-  
-  $ sudo pkill -SIGHUP dockerd
-  
+
+5. tensorflow image download & test
+  $ docker run --runtime=nvidia -it --rm tensorflow/tensorflow:latest-gpu \
+                 python -c "import tensorflow as tf; tf.enable_eager_execution(); print(tf.reduce_sum(tf.random_normal([1000, 1000])))"
