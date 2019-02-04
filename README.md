@@ -10,8 +10,30 @@ tensorflow-gpu 를 docker image 로 설치하기
   * ubuntu-drivers 의 결과중 최신을 설치해 줌.
   <pre><code>
   $ ubuntu-drivers devices
-  $ sudo apt install nvidia-<version>
+  $ sudo apt install nvidia-396
 </code></pre>
+  * reboot
+  * reboot 후 아래 명령어로 drvier 설치 확인
+  <pre><code>
+  $nvidia-smi 
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 396.37                 Driver Version: 396.37                    |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|===============================+======================+======================|
+|   0  GeForce GTX 1060    Off  | 00000000:01:00.0 Off |                  N/A |
+| N/A   50C    P2    27W /  N/A |    326MiB /  6078MiB |      1%      Default |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                       GPU Memory |
+|  GPU       PID   Type   Process name                             Usage      |
+|=============================================================================|
+|    0      1040      G   /usr/lib/xorg/Xorg                           187MiB |
+|    0      1724      G   compiz                                       136MiB |
++-----------------------------------------------------------------------------+
+  </code></pre>
 3. docker-ce 설치
   - https://www.tensorflow.org/install/docker
   <pre><code>
