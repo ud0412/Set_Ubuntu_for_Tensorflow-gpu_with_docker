@@ -3,14 +3,15 @@
 tensorflow-gpu 를 docker image 로 설치하기
 
 1. Ubuntu 18.04 를 설치 한다.
-  - docker image 이기 때문에 ubuntu version 에 의존하지 않지만 nvidia driver 를 최신으로 설치하기 위해 18.04 를 설치 함.
+  * docker image 이기 때문에 ubuntu version 에 의존하지 않지만 nvidia driver 를 최신으로 설치하기 위해 18.04 를 설치 함.
 
 2. nvidia driver 를 설치
-  - cuda toolkit 을 설치하지 않기 때문에 nvidia driver 를 설치해 주어야 함.
-  - ubuntu-drivers 의 결과중 최신을 설치해 줌.
+  * cuda toolkit 을 설치하지 않기 때문에 nvidia driver 를 설치해 주어야 함.
+  * ubuntu-drivers 의 결과중 최신을 설치해 줌.
+  <pre><code>
   $ ubuntu-drivers devices
   $ sudo apt install nvidia-<version>
-
+</code></pre>
 3. docker-ce 설치
   - https://www.tensorflow.org/install/docker
   <pre><code>
